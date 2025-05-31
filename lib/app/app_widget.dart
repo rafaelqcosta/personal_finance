@@ -36,8 +36,11 @@ class AppController extends State<App> with WidgetsBindingObserver {
           backgroundColor: const Color(0xFF4CAF50),
           foregroundColor: Colors.white,
         ),
-        tabBarTheme: TabBarTheme(labelColor: Colors.white, unselectedLabelColor: Colors.white70),
-        cardTheme: CardTheme(
+        tabBarTheme: TabBarThemeData(
+          labelColor: Colors.white,
+          unselectedLabelColor: Colors.white70,
+        ),
+        cardTheme: CardThemeData(
           color: Colors.white,
           surfaceTintColor: Colors.transparent,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
