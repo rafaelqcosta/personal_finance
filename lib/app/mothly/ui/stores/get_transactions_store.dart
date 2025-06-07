@@ -1,11 +1,13 @@
 import 'package:personal_finance/app/core/state/base_state.dart';
 import 'package:personal_finance/app/models/transaction_model.dart';
 import 'package:personal_finance/app/mothly/domain/usecases/get_transactions_usecase.dart';
+import 'package:personal_finance/app/mothly/ui/stores/monthly_balance_store.dart';
 
 class GetTransactionsStore extends BaseController<List<TransactionModel>> {
   final GetTransactionsUsecase usecase;
-  // final balanceMonths = ValueNotifier<List<BalanceMonthModel>>([]);
-  GetTransactionsStore(this.usecase) : super([]);
+  final MonthlyBalanceStore monthlyBalanceStore;
+
+  GetTransactionsStore(this.usecase, this.monthlyBalanceStore) : super([]);
 
   List<TransactionModel> get expenses =>
       success.value.where((e) => e.type == TransactionType.expense).toList();
@@ -36,6 +38,8 @@ class GetTransactionsStore extends BaseController<List<TransactionModel>> {
       },
       (data) {
         update(data);
+        // Recalcular o saldo mensal após obter as transações
+        monthlyBalanceStore.recalculateAfterTransactionChange(year, month);
       },
     );
   }
