@@ -10,7 +10,10 @@ class UpdateTransactionUsecase {
 
   UpdateTransactionUsecase(this.repository, this.updateFutureMonthlyBalancesUsecase);
 
-  Future<Either<Failure, Unit>> call(TransactionModel transaction) async {
+  Future<Either<Failure, Unit>> call({
+    required TransactionModel transaction,
+    required bool onlyOneTransaction,
+  }) async {
     try {
       final result = await repository.update(transaction);
 

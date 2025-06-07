@@ -28,7 +28,6 @@ class MonthlyBalanceFirestoreDatasourceImpl implements MonthlyBalanceFirestoreDa
         // Retorna um balance zerado se não existir
         return Right(
           MonthlyBalanceModel(
-            id: '',
             year: year,
             month: month,
             previousExpectedBalance: 0.0,

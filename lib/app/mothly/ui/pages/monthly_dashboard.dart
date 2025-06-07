@@ -45,7 +45,6 @@ class _MonthlyDashboardState extends State<MonthlyDashboard> {
                   padding: const EdgeInsets.all(16),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    spacing: 16,
                     children: [
                       /// Resumo com saldo anterior
                       ValueListenableBuilder<MonthlyBalanceModel>(
@@ -106,6 +105,7 @@ class _MonthlyDashboardState extends State<MonthlyDashboard> {
                           );
                         },
                       ),
+                      const SizedBox(height: 16),
 
                       Row(
                         children: [
